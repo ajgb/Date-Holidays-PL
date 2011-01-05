@@ -4,7 +4,7 @@ use warnings;
 
 use utf8;
 use DateTime;
-use Test::More tests => 165;
+use Test::More tests => 211;
 
 my $builder = Test::More->builder;
 binmode $builder->output,         ":utf8";
@@ -23,7 +23,7 @@ BEGIN {
 my %FixedHolidays = (
     # New Year's Day
     '0101' => 'Nowy Rok',
-    # Epiphany (1951-1959 only)
+    # Epiphany (1951-1959, 2011+ only)
     '0106' => 'Trzech Króli',
     # Labor Day
     '0501' => 'Święto Państwowe',
@@ -84,6 +84,7 @@ my %fixed_holidays = (
     1960 => [qw( 0101 0501 0722 1101 1225 1226)],
     1989 => [qw( 0101 0501 0722 0815 1101 1111 1225 1226)],
     1990 => [qw( 0101 0501 0503 0815 1101 1111 1225 1226)],
+    2011 => [qw( 0101 0106 0501 0503 0815 1101 1111 1225 1226)],
 );
 
 my %movable_feasts = (
@@ -110,6 +111,12 @@ my %movable_feasts = (
         easter_monday => '0416',
         pentecoste_sunday => '0603',
         corpus_christi => '0614',
+    },
+    2011 => {
+        easter_sunday => '0424',
+        easter_monday => '0425',
+        pentecoste_sunday => '0612',
+        corpus_christi => '0623',
     },
 );
 my @movable_feasts_names_ordered = qw(
